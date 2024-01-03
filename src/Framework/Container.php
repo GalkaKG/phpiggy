@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Framework;
 
-use ReflectionClass;
+use ReflectionClass, ReflectionNamedType;
 use Framework\Exceptions\ContainerException;
 
 class Container
@@ -39,6 +39,12 @@ class Container
             return new $className;
         }
 
+        $dependencies = [];
+
+
+
         dd($params);
     }
 }
+
+//Test
