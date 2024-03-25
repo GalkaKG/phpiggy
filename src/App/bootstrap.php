@@ -9,10 +9,8 @@ use Framework\App;
 
 $app = new App();
 
-$app->get('/');
-$app->get('/about/team');
-$app->get('/about/team/');
-$app->get('about/team/');
+$app->get('/', ['App\Controllers\HomeController', 'home']);
+
 
 dd($app);
 
