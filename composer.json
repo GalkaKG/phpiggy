@@ -8,5 +8,11 @@
             "email": "galina_georgieva_net@abv.bg"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Framework\\": "src/Framework",
+            "App\\": "src/App"
+        }
+    }
 }
