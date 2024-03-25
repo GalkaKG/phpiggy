@@ -1,0 +1,12 @@
+{
+    "name": "galina/phpiggy",
+    "description": "A PHP application for tracking expenses.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "GalkaKG",
+            "email": "galina_georgieva_net@abv.bg"
+        }
+    ],
+    "require": {}
+}
