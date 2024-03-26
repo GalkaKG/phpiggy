@@ -26,6 +26,20 @@ class Container
             throw new ContainerException("Class with ${className} is not instantiable");
         }
 
-        dd($reflectionClass);
+        $constructor = $reflectionClass->getConstructor();
+
+        if (!$constructor) 
+        {
+            return new $className;
+        }
+
+        $param = $constructor->getParameters();
+
+        if (count($param) === 0) 
+        {
+            return new $className;
+        }
+
+        dd($param);
     }
 }
