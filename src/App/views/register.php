@@ -3,6 +3,7 @@
 <section
   class="max-w-2xl mx-auto mt-12 p-4 bg-white shadow-md border border-gray-200 rounded"
 >
+<?php var_dump($errors); ?>
   <form method="POST" class="grid grid-cols-1 gap-6"> 
     <!-- Email -->
     <label class="block">
