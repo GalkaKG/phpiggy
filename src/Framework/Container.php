@@ -47,17 +47,17 @@ class Container
             $type = $param->getType();
 
             if (!$type) {
-                throw new Containerexception("failde to resolve class {$className} because param {$name} is missing a type hint.");
+                throw new Containerexception("Failed to resolve class {$className} because param {$name} is missing a type hint.");
             }
 
             if (!$type instanceof ReflectionNamedType || $type->isBuiltin()) {
                 throw new ContainerException("Failed to resolve class {$className} because invalid param name.");
             }
 
-            $dependencies = $this->get($type->getName());
+            $dependencies[] = $this->get($type->getName());
         }
 
-        dd($dependencies);
+        return $reflectionClass->newInstanceArgs($dependencies);
     }
 
     public function get (string $id) 
@@ -69,7 +69,6 @@ class Container
         $factory = $this->definitions[$id];
         $dependency = $factory();
 
-        // dd($dependency);
         return $dependency;
     }
 }
