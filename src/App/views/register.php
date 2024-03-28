@@ -8,6 +8,7 @@
     <label class="block">
       <span class="text-gray-700">Email address</span>
       <input
+        value="<?php echo $oldFormData['email'] ?? ''; ?>"
         name="email"
         type="email"
         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -23,6 +24,7 @@
     <label class="block">
       <span class="text-gray-700">Age</span>
       <input
+        value="<?php echo $oldFormData['age'] ?? ''; ?>"
         name="age"
         type="number"
         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -41,9 +43,9 @@
         name="country"
         class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
       >
-        <option value="USA">USA</option>
-        <option value="Canada">Canada</option>
-        <option value="Mexico">Mexico</option>
+        <option value="USA" <?php echo isset($oldFormData['country']) && $oldFormData['country'] === 'USA' ? 'selected' : ''; ?>>USA</option>
+        <option value="Canada" <?php echo isset($oldFormData['country']) && $oldFormData['country'] === 'Canada' ? 'selected' : ''; ?>>Canada</option>
+        <option value="Mexico" <?php echo isset($oldFormData['country']) && $oldFormData['country'] === 'Mexico' ? 'selected' : ''; ?>>Mexico</option>
         <option value="Invalid">Invalid Country</option>
       </select>
       <?php if(array_key_exists('country', $errors)) : ?>
@@ -56,6 +58,7 @@
     <label class="block">
       <span class="text-gray-700">Social Media URL</span>
       <input
+        value="<?php echo $oldFormData['socialMediaURL'] ?? ''; ?>"
         name="socialMediaURL"
         type="text"
         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -103,6 +106,7 @@
         <div>
           <label class="inline-flex items-center">
             <input
+                <?php echo $oldFormData['tos'] ?? false ? 'checked' : ''; ?>
                 name="tos"
               class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-offset-0 focus:ring-indigo-200 focus:ring-opacity-50"
               type="checkbox"
