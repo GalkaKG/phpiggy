@@ -10,4 +10,13 @@ $db = new Database("mysql", [
     'dbname' => 'phpiggy'
 ], 'root', '');
 
-echo "Connected to database";
+$search = "Skirt";
+$query = "SELECT * FROM  products WHERE name=?";
+
+$stmt = $db->connection->prepare($query);
+
+$stmt->execute([
+    $search
+]);
+
+var_dump($stmt->fetchAll(PDO::FETCH_OBJ));
