@@ -8,5 +8,14 @@ $config = http_build_query(data: [
 ], arg_separator: ';');
 
 $dsn = "{$driver}:{$config}";
+$username = 'root';
+$password = '';
 
-echo $dsn;
+try {
+    $db = new PDO($dsn, $username, $password);
+} catch (PDOException) {
+    die("Unable to connect to database");
+}
+
+
+echo "Connected to database";
