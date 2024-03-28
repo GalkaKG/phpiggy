@@ -1,21 +1,13 @@
 <?php
 
-$driver = "mysql";
-$config = http_build_query(data: [
+include __DIR__ . '/src/Framework/Database.php';
+
+use Framework\Database;
+
+$db = new Database("mysql", [
     'host' => 'localhost',
     'port' => 3306,
     'dbname' => 'phpiggy'
-], arg_separator: ';');
-
-$dsn = "{$driver}:{$config}";
-$username = 'root';
-$password = '';
-
-try {
-    $db = new PDO($dsn, $username, $password);
-} catch (PDOException) {
-    die("Unable to connect to database");
-}
-
+], 'root', '');
 
 echo "Connected to database";
