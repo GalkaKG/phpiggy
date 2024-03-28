@@ -10,13 +10,28 @@ $db = new Database("mysql", [
     'dbname' => 'phpiggy'
 ], 'root', '');
 
-$search = "Skirt";
-$query = "SELECT * FROM  products WHERE name=?";
+try {
+    $db->connection->beginTransaction();
 
-$stmt = $db->connection->prepare($query);
+    $db->connection->query("INSERT INTO products VALUES(99, 'Gloves')");
 
-$stmt->execute([
-    $search
-]);
+    $search = "Gloves";
+    $query = "SELECT * FROM  products WHERE name=?";
 
-var_dump($stmt->fetchAll(PDO::FETCH_OBJ));
+    $stmt = $db->connection->prepare($query);
+
+    $stmt->execute([
+        $search
+    ]);
+
+    $db->connection->commit();
+
+    var_dump($stmt->fetchAll(PDO::FETCH_OBJ));
+
+} catch (Exception $error) {
+    if ($db->connection->inTransaction()) {
+        $db->connection->rollBack();
+    }
+
+    echo "Transaction failed!";
+}
