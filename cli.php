@@ -38,4 +38,4 @@ $db = new Database("mysql", [
 
 $sqlFile = file_get_contents("./database.sql");
 
-$db->connection->query($sqlFile);
+$db->query($sqlFile);
