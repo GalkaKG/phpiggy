@@ -1,3 +1,5 @@
 composer init
+composer install
 composer dump-autoload
 composer run-script phpiggy
+composer require vlucas/phpdotenv
