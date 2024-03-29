@@ -44,4 +44,23 @@ class UserService
             ]
         );
     }
+
+    public function login($formData)
+    {
+        $user = $this->db->query("SELECT * FROM users WHERE email = :email", [
+            'email' => $formData['email']
+        ])->find();
+
+        $passwordsMatch = password_verify(
+            $formData['password'], 
+            $user['password'] ?? ''
+        );
+
+        if (!$user || !$passwordsMatch)
+        {
+            throw new ValidationException(['password' => ["Invalid credentials"]]);
+        }
+
+        $_SESSION['user'] = $user['id'];
+    }
 }

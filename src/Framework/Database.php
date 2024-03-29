@@ -20,9 +20,11 @@ class Database
         $config = http_build_query(data: $config, arg_separator: ';');
 
         $dsn = "{$driver}:{$config}";
-        // var_dump($_ENV);
+
         try {
-            $this->connection = new PDO($dsn, $username, $password);
+            $this->connection = new PDO($dsn, $username, $password, [
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+            ]);
         } catch (PDOException) {
             die("Unable to connect to database");
         }
@@ -39,5 +41,10 @@ class Database
 
     public function count() {
         return $this->stmt->fetchColumn();
+    }
+
+    public function find()
+    {
+        return $this->stmt->fetch();
     }
 }
