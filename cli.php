@@ -35,7 +35,7 @@ $db = new Database($_ENV['DB_DRIVER'], [
 
 //     echo "Transaction failed!";
 // }
-
+echo $_ENV['DB_HOST'];
 $sqlFile = file_get_contents("./database.sql");
 
 $db->query($sqlFile);

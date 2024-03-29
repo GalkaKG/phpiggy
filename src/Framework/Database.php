@@ -19,7 +19,7 @@ class Database
         $config = http_build_query(data: $config, arg_separator: ';');
 
         $dsn = "{$driver}:{$config}";
-
+        // var_dump($_ENV);
         try {
             $this->connection = new PDO($dsn, $username, $password);
         } catch (PDOException) {
