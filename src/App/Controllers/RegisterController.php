@@ -32,4 +32,9 @@ class RegisterController
 
         redirectTo('/');
     }
+
+    public function loginView()
+    {
+        echo $this->view->render("/login.php");
+    }
 }
