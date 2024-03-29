@@ -28,6 +28,8 @@ class RegisterController
 
         $this->userService->isEmailTaken($_POST['email']);
 
+        $this->userService->create($_POST);
+
         redirectTo('/');
     }
 }
