@@ -46,4 +46,10 @@ class RegisterController
 
         redirectTo('/');
     }
+
+    public function logout() 
+    {
+        $this->userService->logout();
+        redirectTo('/login');
+    }
 }
